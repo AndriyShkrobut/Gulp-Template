@@ -9,7 +9,8 @@ var gulp = require('gulp')
     imagemin = require('gulp-imagemin')
     pngquant = require('imagemin-pngquant'),
     cache = require('gulp-cache'),
-    autoprefixer = require('gulp-autoprefixer');    
+    autoprefixer = require('gulp-autoprefixer'),
+    cssScss = require('gulp-css-scss');
 
 gulp.task('sass', function() {
     return gulp.src('app/sass/**/*.sass')
@@ -27,6 +28,12 @@ gulp.task('scripts', function(){
     .pipe(concat('libs.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('app/js'));
+});
+
+gulp.task('css-scss', function() {
+    return gulp.src('app/libs/**/*.css')
+      .pipe(cssScss())
+      .pipe(gulp.dest('app/libs'));
 });
 
 gulp.task('css-libs',  ['sass'], function() {
@@ -64,7 +71,7 @@ gulp.task('img', function() {
     .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'] , function() {
+gulp.task('watch', ['browser-sync', 'css-scss', 'css-libs', 'scripts'] , function() {
     gulp.watch('app/sass/**/*.sass', ['sass']);
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/js/**/*.js', browserSync.reload);
