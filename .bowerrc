@@ -1,7 +1,3 @@
 {
-<<<<<<< HEAD
-    "directory" : "app/libs/"
-=======
-    "directory": "app/libs/"
->>>>>>> 9cf4704449c0253332af2131d358677b88fbb77a
+  "directory": "app/libs/"
 }
