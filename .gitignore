@@ -3,6 +3,7 @@ build/
 dist/
 .git/
 app/css/
+src/css/
 **/*.psd
 package-lock.json
 **/Thumbs.db
